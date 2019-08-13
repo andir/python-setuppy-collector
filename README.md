@@ -6,12 +6,12 @@ The `MANIFEST.in` files are also collected but not processed further.
 
 # How?
 
-You can run this in a nix repl to make use of the nix build sandbox since this script just evals random setup.py's.
+You can just build the `run.nix` expression while passing the `dir` parameter.
+`dir` should point to the root directory of all the python packages that you
+want to combine.
 
 ```shell
-$ nix repl ./default.nix
-nix-repl> :b runer ../my-project
-	out -> /nix/store/…-dependencies
+$ nix-build run.nix --arg dir /some/where/packages
 ```
 
 The output file will then contain a JSON structure you can use for further processing.
